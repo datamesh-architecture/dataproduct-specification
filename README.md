@@ -15,6 +15,9 @@ Example
 dataProductSpecification: 0.0.1
 ```
 
+Tooling
+---
+- [Data Mesh Manager](https://www.datamesh-manager.com/) supports the data product specification and allows the user to import or export data products using this specification.
 
 License
 ---
