@@ -48,6 +48,12 @@ outputPorts:
     tags:
       - glue
       - athena
+    schema:
+      type: dbt
+      specification:
+        version: 2
+        models:
+          - modelname
   - id: s3_bucket_shelf_warmers_v1
     name: 'S3 Bucket: Shelf Warmers (v1)'
     description: All Shelf Warmers represented as a Glue Catalog table
