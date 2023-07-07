@@ -69,6 +69,10 @@ outputPorts:
       - s3
 ```
 
+Template
+---
+We're currently working on providing a template to help you fill out the data product specification. Stay tuned!
+
 Tooling
 ---
 - [Data Mesh Manager](https://www.datamesh-manager.com/) supports the data product specification and allows the user to import or export data products using this specification.
