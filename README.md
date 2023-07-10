@@ -1,7 +1,9 @@
 # Data Product Specification
 
-The Data Product Specification is an open initiative to define a common data product format for further automation and quality testing.
+The Data Product Specification is an open initiative to define a common data product format.
+It can be used on its own, or in combination with the [Data Contract Specification](https://datacontract-specification.com).
 
+A [data product](https://www.datamesh-manager.com/learn/what-is-a-data-product) is a logical unit that contains all components to process domain data and provide data sets via output ports for analytical use.
 
 Version
 ---
