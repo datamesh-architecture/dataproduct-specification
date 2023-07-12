@@ -41,21 +41,25 @@ outputPorts:
     type: Glue
     status: active
     location: arn:aws:glue:eu-central-1:528115139298:table/fulfillment-shelf-warmers/shelf_warmers
-    links:
-      Athena Query Editor: https://eu-central-1.console.aws.amazon.com/athena/home?region=eu-central-1#/query-editor
-      Glue Table: https://eu-central-1.console.aws.amazon.com/glue/home?region=eu-central-1#/v2/data-catalog/tables/view/fulfillment_shelf_warmers?database=fulfillment-shelf-warmers&catalogId=528115139298
-    custom:
-      platform: aws
     containsPii: false
-    tags:
-      - glue
-      - athena
+    terms:
+      usage: Max queries per minute: 10, Max data processing per day: 1 TiB
+      limitations: Not in realtime. Do not use for operational inventory cleaning.
+      billing: "$1000 / month"
     schema:
       type: dbt
       specification:
         version: 2
         models:
           - modelname
+    links:
+      Athena Query Editor: https://eu-central-1.console.aws.amazon.com/athena/home?region=eu-central-1#/query-editor
+      Glue Table: https://eu-central-1.console.aws.amazon.com/glue/home?region=eu-central-1#/v2/data-catalog/tables/view/fulfillment_shelf_warmers?database=fulfillment-shelf-warmers&catalogId=528115139298
+    custom:
+      platform: aws
+    tags:
+      - glue
+      - athena
   - id: s3_bucket_shelf_warmers_v1
     name: 'S3 Bucket: Shelf Warmers (v1)'
     description: All Shelf Warmers represented as a Glue Catalog table
