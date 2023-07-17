@@ -50,8 +50,33 @@ outputPorts:
       type: dbt
       specification:
         version: 2
+        description:
         models:
-          - modelname
+          - name: orders
+            description: >
+              One record per order. Includes cancelled and deleted orders.
+            columns:
+              - name: order_id
+                type: string
+                description: Primary key of the orders table
+                tests:
+                  - unique
+                  - not_null
+              - name: order_timestamp
+                type: timestamptz
+                description: The business timestamp in UTC when the order was successfully registered in the source system and the payment was successful.
+                tests:
+                  - not_null
+          - name: line_items
+            description: >
+              The items that are part of an order
+            columns:
+              - name: lines_item_id
+                type: string
+                description: Primary key of the lines_item_id table
+              - name: order_id`
+                type: string
+                description: Foreign key to the orders table
     links:
       Athena Query Editor: https://eu-central-1.console.aws.amazon.com/athena/home?region=eu-central-1#/query-editor
       Glue Table: https://eu-central-1.console.aws.amazon.com/glue/home?region=eu-central-1#/v2/data-catalog/tables/view/fulfillment_shelf_warmers?database=fulfillment-shelf-warmers&catalogId=528115139298
