@@ -46,6 +46,7 @@ outputPorts:
       usage: Max queries per minute: 10, Max data processing per day: 1 TiB
       limitations: Not in realtime. Do not use for operational inventory cleaning.
       billing: "$1000 / month"
+      noticePeriod: "P3M"
     schema:
       type: dbt
       specification:
