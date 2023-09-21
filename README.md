@@ -1,7 +1,7 @@
 # Data Product Specification
 
 The Data Product Specification is an open initiative to define a common data product format.
-It can be used on its own, or in combination with the [Data Contract Specification](https://datacontract-specification.com).
+It can be used on its own, or in combination with the [Data Contract Specification](https://datacontract.com).
 
 A [data product](https://www.datamesh-manager.com/learn/what-is-a-data-product) is a logical unit that contains all components to process domain data and provide data sets via output ports for analytical use.
 
@@ -22,8 +22,7 @@ info:
   status: active
   archetype: consumer-aligned
   maturity: managed
-owner:
-  teamId: fulfillment
+  owner: fulfillment
 links:
   Discovery: https://qbffyn0bze.execute-api.eu-central-1.amazonaws.com/prod
   Documentation: http://example.com/datamesh/fulfillment/shelf_warmers
