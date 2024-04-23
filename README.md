@@ -15,23 +15,14 @@ Example
 
 ```yaml
 dataProductSpecification: 0.0.1
+id: shelf_warmers
 info:
-  id: shelf_warmers
   name: Shelf Warmers
   description: Calculated shelfwarmers. Read about calculation in docs.
   status: active
   archetype: consumer-aligned
   maturity: managed
   owner: fulfillment
-links:
-  Discovery: https://qbffyn0bze.execute-api.eu-central-1.amazonaws.com/prod
-  Documentation: http://example.com/datamesh/fulfillment/shelf_warmers
-custom:
-  platform: aws
-tags:
-  - athena
-  - glue
-  - s3
 inputPorts: []
 outputPorts:
   - id: glue_catalog_database_shelf_warmers_v1
@@ -63,6 +54,15 @@ outputPorts:
     containsPii: false
     tags:
       - s3
+links:
+  Discovery: https://qbffyn0bze.execute-api.eu-central-1.amazonaws.com/prod
+  Documentation: http://example.com/datamesh/fulfillment/shelf_warmers
+custom:
+  platform: aws
+tags:
+  - athena
+  - glue
+  - s3
 ```
 
 Template
