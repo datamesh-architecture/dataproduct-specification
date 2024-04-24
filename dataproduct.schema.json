@@ -1,0 +1,314 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "DataProductSpecification",
+  "description": "Data product description, including the output ports. It is based on the [Data Product Specification](https://dataproduct-specification.com/).",
+  "required": ["id", "info"],
+  "properties": {
+    "dataProductSpecification": {
+      "type": "string",
+      "title": "DataProductSpecificationVersion",
+      "enum": [
+        "0.0.1"
+      ],
+      "description": "Specifies the Data Product Specification being used."
+    },
+    "id": {
+      "type": "string",
+      "description": "An organizational unique technical identifier for this data product, such as an UUID, URN, string, number. Format must be a valid path parameter for GET and DELETE requests, so no URI or '/' allowed.",
+      "example": "search-queries-all"
+    },
+    "info": {
+      "type": "object",
+      "description": "Information about the data product",
+      "required": ["title", "owner"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The display name of this data product",
+          "example": "Search Queries all"
+        },
+        "owner": {
+          "type": "string",
+          "description": "The technical id of the team that owns the data product",
+          "example": "search-team"
+        },
+        "description": {
+          "type": "string",
+          "example": "All search queries with user interactions"
+        },
+        "status": {
+          "type": "string",
+          "x-extensible-enum": ["proposed", "in development", "active", "retired"],
+          "example": "active"
+        },
+        "archetype": {
+          "type": "string",
+          "description": "The domain data archetype of the data product, such as consumer-aligned, aggregate, source-aligned.",
+          "x-extensible-enum": ["consumer-aligned", "aggregate", "source-aligned"],
+          "example": "consumer-aligned"
+        },
+        "maturity": {
+          "type": "string",
+          "description": "The maturity level of the data product.",
+          "x-extensible-enum": ["raw", "defined", "managed"],
+          "example": "managed"
+        }
+      }
+    },
+    "inputPorts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "sourceSystemId"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A technical identifier for this input port, such as an UUID, URN, string, number.",
+            "example": "kafka_search_topic"
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name for this input port.",
+            "example": "kafka_search_topic"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description for this input port.",
+            "example": "Kafka Topic with search events"
+          },
+          "sourceSystemId": {
+            "type": "string",
+            "description": "A technical identifier for the source system connected to this input port",
+            "example": "search-service"
+          },
+          "type": {
+            "type": "string",
+            "description": "The technical type of the output port",
+            "example": "Kafka"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location with the actual data",
+            "example": "search topic"
+          },
+          "links": {
+            "type": "object",
+            "description": "Links are used to reference external resources, such as schemas or the dataset in a data catalog. You can add any links.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "schema": "https://catalog.example.com/search/search-queries",
+              "catalog": "https://catalog.example.com/search/search-queries/"
+            }
+          },
+          "custom": {
+            "type": "object",
+            "description": "Custom fields can be used to add additional information to the input port.",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags are used to categorize input ports.",
+            "items": {
+              "type": "string",
+              "example": "kafka"
+            },
+            "example": ["kafka", "search"]
+          }
+        }
+      }
+    },
+    "outputPorts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A technical identifier for this output port, such as an UUID, URN, string, number.",
+            "example": "snowflake_search_queries_all_npii_v1"
+          },
+          "name": {
+            "type": "string",
+            "description": "The display name for this output port.",
+            "example": "snowflake_search_queries_all_npii_v1"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description for this output port.",
+            "example": "All search queries and result sets with PII removed."
+          },
+          "type": {
+            "type": "string",
+            "description": "The technical type of the output port",
+            "x-extensible-enum": ["snowflake", "kafka", "bigquery", "s3", "postgres", "redshift"],
+            "example": "snowflake"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the output port implementation. The allowed status values might be customized for your organization.",
+            "x-extensible-enum": ["proposed", "in development", "active", "retired"],
+            "example": "active"
+          },
+          "location": {
+            "type": "string",
+            "description": "DEPRECATED. Use the appropriate fields in server instead.",
+            "example": "SEARCH_DB.SEARCH_QUERIES_ALL_NPII_V1",
+            "deprecated": true
+          },
+          "server": {
+            "type": "object",
+            "properties": {
+              "project": {
+                "type": "string",
+                "description": "The project name (bigquery)",
+                "example": "dp-search"
+              },
+              "dataset": {
+                "type": "string",
+                "description": "The dataset name (bigquery)",
+                "example": "search-queries"
+              },
+              "account": {
+                "type": "string",
+                "description": "The account name (snowflake)",
+                "example": "https://acme-test_aws_us_east_2.snowflakecomputing.com"
+              },
+              "database": {
+                "type": "string",
+                "description": "The database name (snowflake,postgres)",
+                "example": "SEARCH_DB"
+              },
+              "schema": {
+                "type": "string",
+                "description": "The schema name (snowflake,postgres)",
+                "example": "SEARCH_QUERIES_ALL_NPII_V1"
+              },
+              "host": {
+                "type": "string",
+                "description": "The host name (kafka)",
+                "example": "kafka.acme.com"
+              },
+              "topic": {
+                "type": "string",
+                "description": "The topic name (kafka)",
+                "example": "search-queries"
+              },
+              "location": {
+                "type": "string",
+                "description": "The location url (s3)",
+                "example": "s3://acme-search-queries"
+              },
+              "delimiter": {
+                "type": "string",
+                "description": "The delimiter (s3)",
+                "example": "\"newline\""
+              },
+              "format": {
+                "type": "string",
+                "description": "The format of the data, e.g., csv, json, parquet, delta (s3)",
+                "example": "\"json\""
+              },
+              "table": {
+                "type": "string",
+                "description": "The table name (postgres)",
+                "example": "search_queries"
+              },
+              "view": {
+                "type": "string",
+                "description": "The view name (postgres)",
+                "example": "search_queries"
+              },
+              "share": {
+                "type": "string",
+                "description": "The share name (databricks)"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "description": "The server contains all connection details to find the actual data. Depending on the output port type, this might be different attributes. The main ones are listed explicitly, but feel free to add your own server info."
+          },
+          "links": {
+            "type": "object",
+            "description": "Links are used to reference external resources, such as schemas or the dataset in a data catalog. You can add any links.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "schema": "https://catalog.example.com/search/search-queries",
+              "catalog": "https://catalog.example.com/search/search-queries/"
+            }
+          },
+          "custom": {
+            "type": "object",
+            "description": "Custom fields can be used to add additional information to the output port.",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "containsPii": {
+            "type": "boolean",
+            "description": "Flag, if this output port contains personally identifiable information (PII)",
+            "example": false,
+            "default": false
+          },
+          "autoApprove": {
+            "type": "boolean",
+            "description": "Automatically approve requested data usage agreements towards this output port. You might want to use this for public or internal data that is not sensitive.",
+            "example": false,
+            "default": false
+          },
+          "dataContractId": {
+            "type": "string",
+            "description": "The technical identifier of the data contract that is implemented by this output port",
+            "example": "search-queries-all"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Tags are used to categorize output ports.",
+            "items": {
+              "type": "string",
+              "example": "snowflake"
+            },
+            "example": ["snowflake", "search"]
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "Links are used to reference external resources, such as schemas or the dataset in a data catalog. You can add any links.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "dataProduct": "https://example.com/dataproducts/search-queries",
+        "documentation": "https://git.example.com/search/search-queries/README.md",
+        "catalog": "https://catalog.example.com/search/search-queries/",
+        "repository": "https://git.example.com/search/search-queries"
+      }
+    },
+    "custom": {
+      "type": "object",
+      "description": "Custom fields can be used to add additional information to the data product.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags are used to categorize data products.",
+      "items": {
+        "type": "string",
+        "example": "high-quality"
+      },
+      "example": ["high-quality", "marketing"]
+    }
+  }
+}

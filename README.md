@@ -17,7 +17,7 @@ Example
 dataProductSpecification: 0.0.1
 id: shelf_warmers
 info:
-  name: Shelf Warmers
+  title: Shelf Warmers
   description: Calculated shelfwarmers. Read about calculation in docs.
   status: active
   archetype: consumer-aligned
