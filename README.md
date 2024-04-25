@@ -65,12 +65,21 @@ tags:
   - s3
 ```
 
+Specification
+---
+We currently offer the Specification in form of a JSON Schema [dataproduct.schema.json](https://dataproduct-specification.com/dataproduct.schema.json).
+
+Roadmap
+---
+- Support for specifing internals such as the pipelines
+
 Template
 ---
 We're currently working on providing a template to help you fill out the data product specification. Stay tuned!
 
 Tooling
 ---
+- VS Code: name your file `dataproduct.yaml` and you get code completion within your editor.
 - [Data Mesh Manager](https://www.datamesh-manager.com/) supports the data product specification and allows the user to import or export data products using this specification.
 
 License
