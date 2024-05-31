@@ -28,7 +28,7 @@ outputPorts:
   - id: glue_catalog_database_shelf_warmers_v1
     name: 'Glue Catalog Database: Shelf Warmers (v1)'
     description: All Shelf Warmers represented as a Glue Catalog table
-    dataContract: shelf_warmers_v1
+    dataContractId: shelf_warmers_v1
     type: Glue
     status: active
     location: arn:aws:glue:eu-central-1:528115139298:table/fulfillment-shelf-warmers/shelf_warmers
