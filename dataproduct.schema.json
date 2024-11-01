@@ -53,6 +53,11 @@
           "description": "The maturity level of the data product.",
           "x-extensible-enum": ["raw", "defined", "managed"],
           "example": "managed"
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the data product",
+          "example": "1.1.3"
         }
       }
     },
