@@ -21,7 +21,6 @@ info:
   description: Calculated shelfwarmers. Read about calculation in docs.
   status: active
   archetype: consumer-aligned
-  maturity: managed
   owner: fulfillment
   domain: ecommerce
 inputPorts: []
