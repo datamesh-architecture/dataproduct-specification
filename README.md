@@ -23,6 +23,7 @@ info:
   archetype: consumer-aligned
   maturity: managed
   owner: fulfillment
+  domain: ecommerce
 inputPorts: []
 outputPorts:
   - id: glue_catalog_database_shelf_warmers_v1

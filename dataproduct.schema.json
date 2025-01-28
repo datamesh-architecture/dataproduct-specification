@@ -33,6 +33,11 @@
           "description": "The technical id of the team that owns the data product",
           "example": "search-team"
         },
+        "domain": {
+          "type": "string",
+          "description": "The technical id of the domain",
+          "example": "ecommerce"
+        },
         "description": {
           "type": "string",
           "example": "All search queries with user interactions"
