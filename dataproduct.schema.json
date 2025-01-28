@@ -57,7 +57,8 @@
           "type": "string",
           "description": "The maturity level of the data product.",
           "x-extensible-enum": ["raw", "defined", "managed"],
-          "example": "managed"
+          "example": "managed",
+          "deprecationMessage": "Use the description field instead for now or the archetype."
         }
       }
     },
