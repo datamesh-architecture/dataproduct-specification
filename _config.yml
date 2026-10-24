@@ -1,3 +1,5 @@
+# Without this, jekyll-sitemap and jekyll-seo-tag fall back to http:// URLs.
+url: "https://dataproduct-specification.com"
 plugins:
   - jekyll-sitemap
 name: Data Product Specification
